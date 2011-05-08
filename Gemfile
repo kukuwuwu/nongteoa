@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'mysql'
 gem 'annotate'
 gem 'acts-as-taggable-on'
+gem "will_paginate", "~> 3.0.pre2"
 
 # Use unicorn as the web server
 # gem 'unicorn'
