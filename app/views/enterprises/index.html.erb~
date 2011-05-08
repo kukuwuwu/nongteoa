@@ -1,0 +1,173 @@
+<header id="top">
+  <div class="wrapper">
+    <div id="title"><img SRC="../images/logo.png" alt="Administry" /><!--<span>Administry</span> demo--></div>
+    <div id="topnav">
+      <a href="#"><img class="avatar" SRC="../images/user_32.png" alt="" /></a>
+				欢迎您登陆<b>孙博</b>
+      <span>|</span> <a href="#">个人设置</a>
+      <span>|</span> <a href="#">推出系统</a><br />
+      <small>You have <a href="#" class="high"><b>0</b> new message!</a></small>
+    </div>
+    <!-- End of Top navigation -->
+    <!-- Main navigation -->
+    <nav id="menu">
+      <ul class="sf-menu">
+        <li><a HREF="dashboard.html">控制面板</a></li>
+        <li class="current">
+          <a HREF="#">企业管理</a>
+          <ul>
+            <li><a HREF="#">企业管理</a></li>
+            <li><a HREF="#">行业类别管理</a></li>
+          </ul>
+        </li>
+        <li>
+          <a HREF="styles.html">会议管理</a>
+          <ul>
+            <li>
+              <a HREF="styles.html">Basic Styles</a>
+            </li>
+            <li>
+              <a href="#">Sample Pages...</a>
+              <ul>
+                <li><a HREF="samples-files.html">Files</a></li>
+                <li><a HREF="samples-products.html">Products</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <!-- End of Main navigation -->
+    <!-- Aside links -->
+    <aside><b>English</b> &middot; <a href="#">Spanish</a> &middot; <a href="#">German</a></aside>
+    <!-- End of Aside links -->
+  </div>
+</header>
+<!-- End of Header -->
+<!-- Page title -->
+<div id="pagetitle">
+  <div class="wrapper">
+    <h1>企业管理</h1>
+  </div>
+</div>
+<!-- End of Page title -->
+
+<!-- Page content -->
+<div id="page">
+  <!-- Wrapper -->
+  <div class="wrapper">
+    <!-- Left column/section -->
+    <section class="column width8 first">
+      <h3>企业列表</h3>
+      <div class="box box-info">提示信息</div>
+      <table class="display stylized" id="example">
+        <thead>
+          <tr>
+            <th width="5px">企业编号</th>
+            <th width="20px">企业名称</th>
+            <th width="10px">行业</th>
+            <th width="10px">传真</th>
+            <th width="10px">电话</th>
+            <th width="20px">地址</th>
+            <th width="10px">邮编</th>
+            <th width="10px">E-mail</th>
+            <th width="10px">网址</th>
+            <th width="10px">qq</th>
+            <th width="20px">备注</th>
+            <th width="10px">商标</th>
+            <th width="10px">产品</th>
+            <th width="20px">企业简介</th>
+            <th width="20px">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @enterprises.each do |enterprise| %>
+            <tr class="gradeA">
+              <td><%= enterprise.id %></td>
+              <td><%= enterprise.title %></td>
+              <td><%= enterprise.industry_id %></td>
+              <td><%= enterprise.fax_num %></td>
+              <td><%= enterprise.phone_num %></td>
+              <td><%= enterprise.address %></td>
+              <td><%= enterprise.zip_code %></td>
+              <td><%= enterprise.mail %></td>
+              <td><%= enterprise.site %></td>
+              <td><%= enterprise.qq %></td>
+              <td><%= enterprise.remark %></td>
+              <td><%= enterprise.trademark %></td>
+              <td><%= enterprise.product %></td>
+              <td><%= enterprise.introduction %></td>
+              <td>
+                <%= link_to 'Show', enterprise %>
+                <%= link_to 'Edit', edit_enterprise_path(enterprise) %>
+                <%= link_to 'Destroy', enterprise, :confirm => 'Are you sure?', :method => :delete %>
+              </td>
+            </tr>
+          <%end%>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th width="5px">企业编号</th>
+            <th width="20px">企业名称</th>
+            <th width="10px">行业</th>
+            <th width="10px">传真</th>
+            <th width="10px">电话</th>
+            <th width="20px">地址</th>
+            <th width="10px">邮编</th>
+            <th width="10px">E-mail</th>
+            <th width="10px">网址</th>
+            <th width="10px">qq</th>
+            <th width="20px">备注</th>
+            <th width="10px">商标</th>
+            <th width="10px">产品</th>
+            <th width="20px">企业简介</th>
+            <th width="20px">操作</th>
+          </tr>
+        </tfoot>
+      </table>
+      <div class="clear">&nbsp;</div>
+    </section>
+    <!-- End of Left column/section -->
+  </div>
+  <!-- End of Wrapper -->
+</div>
+<!-- End of Page content -->
+
+<!-- Page footer -->
+<footer id="bottom">
+  <div class="wrapper">
+    <nav>
+      <a href="#">Dashboard</a> &middot;
+      <a href="#">Content</a> &middot;
+      <a href="#">Reports</a> &middot;
+      <a href="#">Users</a> &middot;
+      <a href="#">Media</a> &middot;
+      <a href="#">Events</a> &middot;
+      <a href="#">Newsletter</a> &middot;
+      <a href="#">Settings</a>
+    </nav>
+    <p>Copyright &copy; 2010 <b><a HREF="../../themeforest.net/user/zoranjuric" title="Visit my profile page @ThemeForest">Zoran Juric</a></b> | Icons by <a HREF="../../www.famfamfam.com/index.htm">FAMFAMFAM</a></p>
+  </div>
+</footer>
+<!-- End of Page footer -->
+
+<!-- Animated footer -->
+<footer id="animated">
+  <ul>
+    <li><a href="#">Dashboard</a></li>
+    <li><a href="#">Content</a></li>
+    <li><a href="#">Reports</a></li>
+    <li><a href="#">Users</a></li>
+    <li><a href="#">Media</a></li>
+    <li><a href="#">Events</a></li>
+    <li><a href="#">Newsletter</a></li>
+    <li><a href="#">Settings</a></li>
+  </ul>
+</footer>
+<!-- End of Animated footer -->
+
+<!-- Scroll to top link -->
+<a href="#" id="totop">^ scroll to top</a>
+
+<!-- User interface javascript load -->
+<script type="text/javascript" SRC="/javascripts/administry.js"></script>

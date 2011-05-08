@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- Main Stylesheet -->
+    <%= stylesheet_link_tag "style.css" %>
+    <!-- jQuery with plugins -->
+    <%#= javascript_include_tag :defaults %>
+    <%= javascript_include_tag "jquery-1.4.2.min.js" %>
+    <%#= javascript_include_tag "jquery.ui.core.min.js" %>
+    <%#= javascript_include_tag "jquery.ui.widget.min.js" %>
+    <%#= javascript_include_tag "jquery.ui.tabs.min.js" %>
+    <%#= javascript_include_tag "jquery.tipTip.min.js" %>
+    <%= javascript_include_tag "jquery.superfish.min.js" %><%#*导航相关%>
+    <%= javascript_include_tag "jquery.supersubs.min.js" %>
+    <%#= javascript_include_tag "jquery.validate_pack.js" %>
+    <%#= javascript_include_tag "jquery.nyroModal.pack.js" %>
+    <%#= javascript_include_tag "jquery.dataTables.min.js" %>
+    <%#= javascript_include_tag "administry.js" %>
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+        /* setup navigation, content boxes, etc... */
+  //      Administry.setup();
+
+        /* datatable */
+    //    $('#example').dataTable();
+
+        /* expandable rows */
+     //   Administry.expandableRows();
+
+     $('#menu ul').supersubs({
+		minWidth:    12,   // minimum width of sub-menus in em units
+		maxWidth:    27,   // maximum width of sub-menus in em units
+		extraWidth:  1     // extra width can ensure lines don't sometimes turn over
+						   // due to slight rounding differences and font-family
+	}).superfish();
+
+      });
+
+    </script>
+  </head>
+  <body>
+    <%= render :partial => "common/partials/header" %>
+    <%= yield %>
+    <%= render :partial => "common/partials/footer" %>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<div id="pagetitle">
+  <div class="wrapper">
+    <h1>企业管理</h1>
+  </div>
+</div>
+<div id="page">
+  <div class="wrapper">
+    <section class="column width9 first">
+      <h3>企业列表</h3>
+      <div class="box box-info">提示信息</div>
+
+      <div class="dataTables_filter">
+        <%= facebox_link_to content_tag(:span, "", :class => "icon icon-add")+"添加新企业", new_enterprise_path, :remote => true, :class => "btn"%>
+        <p/>
+      </div>
+      <table class="display stylized" id="example">
+        <thead>
+          <tr>
+            <th width="10px">企业编号</th>
+            <th width="20px">企业名称</th>
+            <th width="10px">行业</th>
+            <th width="20px">传真</th>
+            <th width="20px">电话</th>
+            <th width="20px">地址</th>
+            <th width="10px">邮编</th>
+            <th width="10px">E-mail</th>
+            <th width="20px">备注</th>
+            <th width="10px">商标</th>
+            <th width="10px">产品</th>
+            <th width="20px">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @enterprises.each do |enterprise| %>
+            <tr class="gradeA <%= cycle("even", "odd")%>">
+              <td><%= enterprise.id %></td>
+              <td><%= enterprise.title %></td>
+              <td><%= enterprise.industry_id %></td>
+              <td><%= enterprise.fax_num %></td>
+              <td><%= enterprise.phone_num %></td>
+              <td><%= enterprise.address %></td>
+              <td><%= enterprise.zip_code %></td>
+              <td><%= enterprise.mail %></td>
+              <td><%= enterprise.remark %></td>
+              <td><%= enterprise.trademark %></td>
+              <td><%= enterprise.product %></td>
+              <td>
+                <%= link_to 'Show', enterprise %>
+                <%= link_to 'Edit', edit_enterprise_path(enterprise) %>
+                <%= link_to 'Destroy', enterprise, :confirm => 'Are you sure?', :method => :delete %>
+              </td>
+            </tr>
+          <%end%>
+        </tbody>
+      </table>
+      <div class="dataTables_filter">
+        <a href="#" class="btn"><span class="icon icon-add">&nbsp;</span>添加新企业</a>
+        <p/>
+      </div>
+      <div class="clear">&nbsp;</div>
+    </section>
+    <!-- End of Left column/section -->
+  </div>
+  <!-- End of Wrapper -->
+</div>
+<!-- End of Page content -->
+<%= javascript_include_tag "administry.js" %>

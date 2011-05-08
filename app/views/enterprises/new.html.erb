@@ -1,0 +1,227 @@
+<script type="text/javascript">
+  var threeSelectData={
+    "beijing":{val:"01",items:{
+        "bj-01":{val:"0101",items:{
+            "bj-01-01":"010101"
+          }},
+        "bj-02":{val:"0102",items:{
+            "bj-02-01":"010201",
+            "bj-02-02":"010202"
+          }}
+      }},
+    "shanxi":{val:"02",items:{}},
+    "guangzhou":{val:"02",items:{}}
+  };
+  $(function(){
+    var $s1=$("#Select1");
+    var $s2=$("#Select2");
+    var $s3=$("#Select3");
+    // var v1=null;
+    // var v2=null;
+    // var v3=null;
+    var v1="01";
+    var v2="0102";
+    var v3="010202";
+    $.each(threeSelectData,function(k,v){
+      appendOptionTo($s1,k,v.val,v1);
+    });
+    $s1.change(function(){
+      $s2.html("");
+      $s3.html("");
+      if(this.selectedIndex==-1) return;
+      var s1_curr_val = this.options[this.selectedIndex].value;
+      $.each(threeSelectData,function(k,v){
+        if(s1_curr_val==v.val){
+          if(v.items){
+            $.each(v.items,function(k,v){
+              appendOptionTo($s2,k,v.val,v2);
+            });
+          }
+        }
+      });
+      $s2.change();
+    }).change();
+    $s2.change(function(){
+      $s3.html("");
+      var s1_curr_val = $s1[0].options[$s1[0].selectedIndex].value;
+      if(this.selectedIndex==-1) return;
+      var s2_curr_val = this.options[this.selectedIndex].value;
+      $.each(threeSelectData,function(k,v){
+        if(s1_curr_val==v.val){
+          if(v.items){
+            $.each(v.items,function(k,v){
+              if(s2_curr_val==v.val){
+                $.each(v.items,function(k,v){
+                  appendOptionTo($s3,k,v,v3);
+                });
+              }
+            });
+          }
+        }
+      });
+    }).change();
+    function appendOptionTo($o,k,v,d){
+      var $opt=$("<option>").text(k).val(v);
+      if(v==d){$opt.attr("selected", "selected")}
+      $opt.appendTo($o);
+    }
+  });
+</script>
+<div id="pagetitle">
+  <div class="wrapper">
+    <h1>企业管理 → <span>添加企业信息</span></h1>
+  </div>
+</div>
+<div id="page">
+  <div class="wrapper">
+    <%= form_for(@enterprise) do |f| %>
+      <section class="column width3 first">
+        <% if @enterprise.errors.any? %>
+          <fieldset>
+            <legend>Error message</legend>
+            <div class="box box-error"><%= pluralize(@enterprise.errors.count, "error") %></div>
+            <div class="box box-error-msg">
+              <ol>
+                <% @enterprise.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ol>
+            </div>
+          </fieldset>
+        <% end %>
+        <fieldset>
+          <legend>企业信息</legend>
+          <p>
+            <%= f.label :title,"企业名称", :class => "required", :ACCESSKEY => "t"%><br/>
+            <%= f.text_field :title%>&nbsp;<a href="#" class="btn btn-blue">验证重复</a>
+          </p>
+          <p>
+            <%= f.label :province_id,"所在地", :class => "required"%><br/>
+            <%= f.select :province_id, "<option value=\"0\">请选择</option>"%>
+            <%= f.select :city_id, "<option value=\"0\">请选择</option>"%>
+          </p>
+          <p class="required">
+            <%= f.label :industry_id,"行业类别", :class => "required"  %><br/>
+            <%= f.text_field :industry_id%>
+          </p>
+          <p class="required">
+            <%= f.label :fax_num,"传真", :class => "required"  %><br/>
+            <%= f.text_field :fax_num%>
+          </p>
+          <p class="required">
+            <%= f.label :phone_num,"电话", :class => "required"  %><br/>
+            <%= f.text_field :phone_num%>
+          </p>
+          <p class="required">
+            <%= f.label :address,"地址", :class => "required"  %><br/>
+            <%= f.text_field :address%>
+          </p>
+          <p class="required">
+            <%= f.label :zip_code,"邮编", :class => "required"  %><br/>
+            <%= f.text_field :zip_code%>
+          </p>
+          <p class="required">
+            <%= f.label :mail,"E-mail", :class => "required"  %><br/>
+            <%= f.text_field :mail%>
+          </p>
+          <p class="required">
+            <%= f.label :site,"网址", :class => "required"  %><br/>
+            <%= f.text_field :site%>
+          </p>
+          <p class="required">
+            <%= f.label :qq %><br/>
+            <%= f.text_field :qq%>
+          </p>
+        </fieldset>
+      </section>
+      <section class="column width3">
+        <fieldset>
+          <legend>企业产品信息</legend>
+          <p class="required">
+            <%= f.label :trademark, "商标" %><br/>
+            <%= f.text_field :trademark%>
+          </p>
+          <p class="required">
+            <%= f.label :product, "产品", :class => "required"  %><br/>
+            <%= f.text_field :product%>
+          </p>
+          <p class="required">
+            <%= f.label :introduction, "简介" %><br/>
+            <%= f.text_area :introduction, :class => "small full"%>
+          </p>
+          <p class="required">
+            <%= f.label :remark,"企业备注" %><br/>
+            <%= f.text_area :remark, :class => "small full"%>
+          </p>
+        </fieldset>
+        <fieldset>
+          <legend>标签tagTo</legend>
+          <p>
+            <textarea id="tags" class="small full tagInput" name="tags"></textarea>
+          </p>
+          <p>
+                      <span class="label label-blue">Blue</span>
+          <span class="label label-blue">标记一</span>
+          <span class="label label-blue">标记一</span>
+          <span class="label label-blue">标记一</span>
+          <span class="label label-blue">标记一</span>
+          <span class="label label-blue">标记一标记一标记一</span>
+          <span class="label label-red">已标记</span>
+          <span class="label label-blue">Blue</span>
+          <span class="label label-blue">Blue</span>
+          <span class="label label-green">已标记</span>
+          <span class="label label-blue">Blue</span>
+          </p>
+        </fieldset>
+      </section>
+      <section class="column width3">
+        <fieldset>
+          <legend>企业联系人</legend>
+          <% @enterprise.content_persons.build %>
+          <%=f.fields_for :content_persons do |content_person|%>
+            <p>
+              <%= content_person.label :name, "联系人姓名："%><br/>
+              <%= content_person.text_field :name%>
+            </p>
+            <p>
+              <%= content_person.label :position, "职务："%><br/>
+              <%= content_person.text_field :position%>
+            </p>
+            <p>
+              <%= content_person.label :phone_num, "联系电话："%><br/>
+              <%= content_person.text_field :phone_num%>
+            </p>
+            <p>
+              <%= content_person.label :fax_num, "传真："%><br/>
+              <%= content_person.text_field :fax_num%>
+            </p>
+            <p>
+              <%= content_person.label :mail, "邮箱："%><br/>
+              <%= content_person.text_field :mail%>
+            </p>
+            <p>
+              <%= content_person.label :address, "地址："%><br/>
+              <%= content_person.text_field :address%>
+            </p>
+            <p>
+              <%= content_person.label :zip_code, "邮编："%><br/>
+              <%= content_person.text_field :zip_code%>
+            </p>
+            <p>
+              <%= content_person.label :remark, "备注："%><br/>
+              <%= content_person.text_field :remark%>
+            </p>
+          <%end%>
+        </fieldset>
+        <fieldset>
+          <legend>操作</legend>
+          <p>
+            <%= f.submit "确认添加该企业", :class => "btn btn-green big"%>
+            <%= f.submit "放弃并返回", :class => "btn btn-red big"%>
+          </p>
+        </fieldset>
+      </section>
+    <section class="column width2"></section>
+    <%end%>
+  </div>
+</div>
