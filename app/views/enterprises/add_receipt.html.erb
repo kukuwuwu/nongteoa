@@ -1,0 +1,73 @@
+<div id="page">
+  <div class="wrapper">
+    <%= form_for(@enterprise) do |f| %>
+      <section class="column width3 first">
+        <% if @enterprise.errors.any? %>
+          <fieldset>
+            <legend>Error message</legend>
+            <div class="box box-error"><%= pluralize(@enterprise.errors.count, "error") %></div>
+            <div class="box box-error-msg">
+              <ol>
+                <% @enterprise.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ol>
+            </div>
+          </fieldset>
+        <% end %>
+        <fieldset>
+          <legend>企业信息</legend>
+          <p>
+            <%= f.label :title,"企业名称", :class => "required", :ACCESSKEY => "t"%><br/>
+            <%= f.text_field :title%>&nbsp;<a href="#" class="btn btn-blue">验证重复</a>
+          </p>
+          <p>
+            <%= f.label :province_id,"所在地", :class => "required"%><br/>
+            <%= f.select :province_id, "<option value=\"0\">请选择</option>"%>
+            <%= f.select :city_id, "<option value=\"0\">请选择</option>"%>
+          </p>
+          <p class="required">
+            <%= f.label :industry_id,"行业类别", :class => "required"  %><br/>
+            <%= f.text_field :industry_id%>
+          </p>
+          <p class="required">
+            <%= f.label :fax_num,"传真", :class => "required"  %><br/>
+            <%= f.text_field :fax_num%>
+          </p>
+          <p class="required">
+            <%= f.label :phone_num,"电话", :class => "required"  %><br/>
+            <%= f.text_field :phone_num%>
+          </p>
+          <p class="required">
+            <%= f.label :address,"地址", :class => "required"  %><br/>
+            <%= f.text_field :address%>
+          </p>
+          <p class="required">
+            <%= f.label :zip_code,"邮编", :class => "required"  %><br/>
+            <%= f.text_field :zip_code%>
+          </p>
+          <p class="required">
+            <%= f.label :mail,"E-mail", :class => "required"  %><br/>
+            <%= f.text_field :mail%>
+          </p>
+          <p class="required">
+            <%= f.label :site,"网址", :class => "required"  %><br/>
+            <%= f.text_field :site%>
+          </p>
+          <p class="required">
+            <%= f.label :qq %><br/>
+            <%= f.text_field :qq%>
+          </p>
+        </fieldset>
+        <fieldset>
+          <legend>操作</legend>
+          <p>
+            <%= f.submit "确认添加该企业", :class => "btn btn-green big"%>
+            <%= f.submit "放弃并返回", :class => "btn btn-red big"%>
+          </p>
+        </fieldset>
+      </section>
+
+    <%end%>
+  </div>
+</div>

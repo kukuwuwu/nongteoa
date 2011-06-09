@@ -1,5 +1,9 @@
 NongteOa::Application.routes.draw do
-  resources :enterprises
+  resources :enterprises do
+    member do
+      get "add_receipt"
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

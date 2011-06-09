@@ -85,4 +85,9 @@ class EnterprisesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  # 添加发票信息
+  def add_receipt
+    @enterprise = Enterprise.new
+  end
 end

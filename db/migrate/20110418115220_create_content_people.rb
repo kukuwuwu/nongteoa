@@ -2,9 +2,11 @@ class CreateContentPeople < ActiveRecord::Migration
   def self.up
     create_table :content_people do |t|
       t.integer :enterprise_id
-      t.string :name
-      t.string :position
+      t.integer :sex, :default => 0, :null => false
+      t.string :name, :null => false
+      t.string :position, :null => false
       t.string :phone_num
+      t.string :mobile_num
       t.string :fax_num
       t.string :mail
       t.string :address

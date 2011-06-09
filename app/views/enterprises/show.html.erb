@@ -1,75 +1,168 @@
-<p id="notice"><%= notice %></p>
+<div id="pagetitle">
+  <div class="wrapper">
+    <h1>企业管理 → <span><%= @enterprise.title %></span></h1>
+  </div>
+</div>
+<div id="page">
+  <div class="wrapper">
+    <section class="column width6 first">
+      <div class="colgroup leading">
+        <div class="column width3 first">
+          <h4>企业基本信息</h4>
+          <hr/>
+          <table class="no-style full">
+            <tbody>
+              <tr>
+                <td>企业名称：</td>
+                <td class="ta-right"><%= @enterprise.title %></td>
+              </tr>
+              <tr>
+                <td>所在地：</td>
+                <td class="ta-right"><%= @enterprise.address %></td>
+              </tr>
+              <tr>
+                <td>详细地址：</td>
+                <td class="ta-right"><%= @enterprise.address %></td>
+              </tr>
+              <tr>
+                <td>邮编：</td>
+                <td class="ta-right"><%= @enterprise.zip_code %></td>
+              </tr>
+              <tr>
+                <td>行业类别：</td>
+                <td class="ta-right"><%= @enterprise.industry_id %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="column width3">
+          <h4>联系方式<span style="float:right;"><a href="#">Edit</a></span></h4>
+          <hr/>
+          <table class="no-style full">
+            <tbody>
+              <tr>
+                <td>电话：</td>
+                <td class="ta-right"><%= @enterprise.phone_num %></td>
+              </tr>
+              <tr>
+                <td>传真：</td>
+                <td class="ta-right"><%= @enterprise.fax_num %></td>
+              </tr>
+              <tr>
+                <td>E-mail：</td>
+                <td class="ta-right"><%= @enterprise.mail %></td>
+              </tr>
+              <tr>
+                <td>QQ：</td>
+                <td class="ta-right"><%= @enterprise.qq %></td>
+              </tr>
+              <tr>
+                <td>网址：</td>
+                <td class="ta-right"><%= @enterprise.site %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-<p>
-  <b>Admin:</b>
-  <%= @enterprise.admin_id %>
-</p>
+      <div class="colgroup leading">
+        <div class="column width6 first">
+          <h4>其他信息</h4>
+          <hr/>
+          <table class="no-style full">
+            <tbody>
+              <tr>
+                <td width="100px">企业简介：</td>
+                <td><%= @enterprise.introduction %></td>
+              </tr>
+              <tr>
+                <td>商标：</td>
+                <td><%= @enterprise.trademark %></td>
+              </tr>
+              <tr>
+                <td>产品：</td>
+                <td><%= @enterprise.product %></td>
+              </tr>
+              <tr>
+                <td>备注：</td>
+                <td><%= @enterprise.remark %></td>
+              </tr>
+              <tr>
+                <td>标记：</td>
+                <td>
+                  <span class="label label-blue">标记1</span>
+                  <span class="label label-blue">测试标记</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-<p>
-  <b>Title:</b>
-  <%= @enterprise.title %>
-</p>
+      <div class="colgroup leading">
+        <div class="column width9 first">
+          <h4>联系人</h4>
+          <hr/>
+          <table class="no-style full">
+            <tbody>
+              <tr>
+                <td>姓名</td>
+                <td>性别</td>
+                <td>职务</td>
+                <td>固定电话</td>
+                <td>移动电话</td>
+                <td>邮箱</td>
+                <td>地址</td>
+                <td>备注</td>
+                <td>操作</td>
+              </tr>
+              <%=render :partial => "/enterprises/partials/content_people_tr", :collection => @enterprise.content_persons%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="clear">&nbsp;</div>
 
-<p>
-  <b>Industry:</b>
-  <%= @enterprise.industry_id %>
-</p>
+      <div class="colgroup leading">
+        <div class="column width9 first">
+          <h4>企业发票信息</h4>
+          <hr/>
+          <table class="no-style full">
+            <tbody>
+              <tr>
+                <td>发票台头</td>
+                <td>税号</td>
+                <td>主要的</td>
+                <td>操作</td>
+              </tr>
+              <%=render :partial => "/enterprises/partials/receipt_tr", :collection => @enterprise.enterprise_receipts%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="clear">&nbsp;</div>
 
-<p>
-  <b>Fax num:</b>
-  <%= @enterprise.fax_num %>
-</p>
-
-<p>
-  <b>Phone num:</b>
-  <%= @enterprise.phone_num %>
-</p>
-
-<p>
-  <b>Address:</b>
-  <%= @enterprise.address %>
-</p>
-
-<p>
-  <b>Zip code:</b>
-  <%= @enterprise.zip_code %>
-</p>
-
-<p>
-  <b>Mail:</b>
-  <%= @enterprise.mail %>
-</p>
-
-<p>
-  <b>Site:</b>
-  <%= @enterprise.site %>
-</p>
-
-<p>
-  <b>Qq:</b>
-  <%= @enterprise.qq %>
-</p>
-
-<p>
-  <b>Remark:</b>
-  <%= @enterprise.remark %>
-</p>
-
-<p>
-  <b>Trademark:</b>
-  <%= @enterprise.trademark %>
-</p>
-
-<p>
-  <b>Product:</b>
-  <%= @enterprise.product %>
-</p>
-
-<p>
-  <b>Introduction:</b>
-  <%= @enterprise.introduction %>
-</p>
-
-
-<%= link_to 'Edit', edit_enterprise_path(@enterprise) %> |
-<%= link_to 'Back', enterprises_path %>
+    </section>
+    <aside class="column width2">
+      <div id="rightmenu">
+        <header>
+          <h3>操作</h3>
+        </header>
+        <dl class="first">
+          <dt>
+            <%=image_tag "key.png", :size => "16x16"%>
+          </dt>
+          <dd><%= link_to '编辑企业信息', edit_enterprise_path(@enterprise) %></dd>
+          <dd class="last">修改企业相关信息</dd>
+        </dl>
+        <dl>
+          <dt>
+            <%=image_tag "key.png", :size => "16x16"%>
+          </dt>
+          <dd><%= link_to '删除该企业', edit_enterprise_path(@enterprise) %></dd>
+          <dd class="last">修改企业相关信息</dd>
+        </dl>
+      </div>
+    </aside>
+  </div>
+</div>
