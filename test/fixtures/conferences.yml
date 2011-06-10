@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  convoke_date: 
+  conference_type_id: 1
+  conference_state_id: 1
+
+two:
+  title: MyString
+  convoke_date: 
+  conference_type_id: 1
+  conference_state_id: 1

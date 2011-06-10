@@ -1,6 +1,5 @@
 # coding: utf-8
 class EnterprisesController < ApplicationController
-  layout 'main'
   # GET /enterprises
   # GET /enterprises.xml
   def index

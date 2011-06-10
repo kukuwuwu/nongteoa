@@ -5,6 +5,7 @@ class CreateEnterprises < ActiveRecord::Migration
       t.string :title
       t.integer :province_id
       t.integer :city_id
+      t.integer :country_id
       t.integer :industry_id
       t.string :fax_num
       t.string :phone_num

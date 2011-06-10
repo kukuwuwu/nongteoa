@@ -7,10 +7,8 @@
   <div class="wrapper">
     <section class="column width9 first">
       <h3>企业列表</h3>
-      <div class="box box-info">提示信息</div>
-
       <div class="dataTables_filter">
-        <%= facebox_link_to content_tag(:span, "", :class => "icon icon-add")+"添加新企业", new_enterprise_path, :remote => true, :class => "btn"%>
+        <%= link_to content_tag(:span, "", :class => "icon icon-add")+"添加新企业", new_enterprise_path, :class => "btn"%>
         <p/>
       </div>
       <table class="display stylized" id="example">
@@ -45,7 +43,7 @@
         </tbody>
       </table>
       <div class="dataTables_filter">
-        <%= link_to content_tag(:span, "", :class => "icon icon-add")+"添加新企业", new_enterprise_path, :remote => true, :class => "btn"%>
+        <%= link_to content_tag(:span, "", :class => "icon icon-add")+"添加新企业", new_enterprise_path, :class => "btn"%>
         <p/>
       </div>
       <div class="clear">&nbsp;</div>

@@ -4,12 +4,31 @@ gem 'rails', '3.0.6'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
+#gem 'mysql'
+gem 'mysql2','0.2.7'
 
-gem 'sqlite3'
-gem 'mysql'
 gem 'annotate'
-gem 'acts-as-taggable-on'
+#gem 'acts-as-taggable-on'
+
 gem "will_paginate", "~> 3.0.pre2"
+gem 'devise'
+gem 'cancan'
+#gem "jquery-rails"
+gem "will_paginate", "~> 3.0.pre2"
+gem "acts-as-taggable-on", "~> 2.0.6"
+gem 'paperclip'
+gem "spreadsheet"
+
+gem "hiredis", "~> 0.3.1"
+#gem "em-synchrony"
+#gem "redis", "~> 2.2.0", :require => ["redis/connection/synchrony", "redis"]
+#gem "redis", "~> 2.2.0"
+gem 'awesome_nested_set', "~> 2"
+
+gem "exception_notification_rails3", :require => 'exception_notifier'
+gem "rails_best_practices"
+gem "hirb-unicode"
+
 
 # Use unicorn as the web server
 # gem 'unicorn'

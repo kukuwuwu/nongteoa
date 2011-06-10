@@ -7,29 +7,11 @@
   <div class="wrapper">
     <%= form_for(@enterprise) do |f| %>
       <section class="column width3 first">
-        <% if @enterprise.errors.any? %>
-          <fieldset>
-            <legend>Error message</legend>
-            <div class="box box-error"><%= pluralize(@enterprise.errors.count, "error") %></div>
-            <div class="box box-error-msg">
-              <ol>
-                <% @enterprise.errors.full_messages.each do |msg| %>
-                  <li><%= msg %></li>
-                <% end %>
-              </ol>
-            </div>
-          </fieldset>
-        <% end %>
         <fieldset>
           <legend>企业信息</legend>
           <p>
             <%= f.label :title,"企业名称", :class => "required", :ACCESSKEY => "t"%><br/>
             <%= f.text_field :title%>&nbsp;<a href="#" class="btn btn-blue">验证重复</a>
-          </p>
-          <p>
-            <%= f.label :province_id,"所在地", :class => "required"%><br/>
-            <%= f.select :province_id, "<option value=\"0\">请选择</option>"%>
-            <%= f.select :city_id, "<option value=\"0\">请选择</option>"%>
           </p>
           <p class="required">
             <%= f.label :industry_id,"行业类别", :class => "required"  %><br/>
@@ -42,10 +24,6 @@
           <p class="required">
             <%= f.label :phone_num,"电话", :class => "required"  %><br/>
             <%= f.text_field :phone_num%>
-          </p>
-          <p class="required">
-            <%= f.label :address,"地址", :class => "required"  %><br/>
-            <%= f.text_field :address%>
           </p>
           <p class="required">
             <%= f.label :zip_code,"邮编", :class => "required"  %><br/>
@@ -66,6 +44,19 @@
         </fieldset>
       </section>
       <section class="column width3">
+        <fieldset>
+          <legend>企业所在地及地址</legend>
+          <p>
+            <%= f.label :province_id,"所在地", :class => "required"%><br/>
+            <%= f.select :province_id, "<option value=\"0\">请选择</option>"%>
+            <%= f.select :city_id, "<option value=\"0\">请选择</option>"%>
+            <%= f.select :country_id, "<option value=\"0\">请选择</option>"%>
+          </p>
+          <p>
+            <%= f.label :address,"地址", :class => "required"  %><br/>
+            <%= f.text_field :address%>
+          </p>
+        </fieldset>
         <fieldset>
           <legend>企业产品信息</legend>
           <p class="required">
@@ -91,17 +82,17 @@
             <textarea id="tags" class="small full tagInput" name="tags"></textarea>
           </p>
           <p>
-                      <span class="label label-blue">Blue</span>
-          <span class="label label-blue">标记一</span>
-          <span class="label label-blue">标记一</span>
-          <span class="label label-blue">标记一</span>
-          <span class="label label-blue">标记一</span>
-          <span class="label label-blue">标记一标记一标记一</span>
-          <span class="label label-red">已标记</span>
-          <span class="label label-blue">Blue</span>
-          <span class="label label-blue">Blue</span>
-          <span class="label label-green">已标记</span>
-          <span class="label label-blue">Blue</span>
+            <span class="label label-blue">Blue</span>
+            <span class="label label-blue">标记一</span>
+            <span class="label label-blue">标记一</span>
+            <span class="label label-blue">标记一</span>
+            <span class="label label-blue">标记一</span>
+            <span class="label label-blue">标记一标记一标记一</span>
+            <span class="label label-red">已标记</span>
+            <span class="label label-blue">Blue</span>
+            <span class="label label-blue">Blue</span>
+            <span class="label label-green">已标记</span>
+            <span class="label label-blue">Blue</span>
           </p>
         </fieldset>
       </section>
@@ -152,7 +143,16 @@
           </p>
         </fieldset>
       </section>
-    <section class="column width2"></section>
+      <section class="column width2"></section>
     <%end%>
   </div>
 </div>
+<script language="javascript">
+  window.mulSelectData = '<%= OaUtil.address_data %>';
+  var mulSelects = [];
+  var mulSelect = $(document).multilevelSelect({
+    data : jQuery.parseJSON(window.mulSelectData),
+    selects : ['#enterprise_province_id','#enterprise_city_id','#enterprise_country_id']
+  });
+  mulSelects.push(mulSelect);
+</script>

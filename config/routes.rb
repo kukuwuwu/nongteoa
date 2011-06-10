@@ -1,4 +1,11 @@
 NongteOa::Application.routes.draw do
+
+  resources :conferences
+
+  devise_for :admins
+
+  root :to => "enterprises#index"
+
   resources :enterprises do
     member do
       get "add_receipt"

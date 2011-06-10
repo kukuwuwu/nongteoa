@@ -8,7 +8,7 @@
         <%=image_tag "user_32.png", :class => "avatar"%></a>
 				欢迎您登陆<b>孙博</b>
       <span>|</span> <a href="#">个人设置</a>
-      <span>|</span> <a href="#">推出系统</a><br />
+      <span>|</span> <a href="#">退出系统</a><br />
       <small>You have <a href="#" class="high"><b>0</b> new message!</a></small>
     </div>
     <!-- End of Top navigation -->
@@ -16,7 +16,7 @@
     <nav id="menu">
       <ul class="sf-menu">
         <li><a HREF="dashboard.html">控制面板</a></li>
-        <li class="current">
+        <li class="<%= "current" if controller_name == "enterprises" %>">
           <%=link_to "企业管理", enterprises_path%>
           <ul>
             <li><%=link_to "企业管理", enterprises_path%></li>
@@ -37,6 +37,9 @@
               </ul>
             </li>
           </ul>
+        </li>
+        <li class="<%= "current" if controller_name == "conferences" %>">
+          <%= link_to "会议管理", conferences_path %>
         </li>
         <li><a HREF="#">管理员管理</a></li>
       </ul>
